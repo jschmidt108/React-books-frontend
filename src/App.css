@@ -1,3 +1,41 @@
+
+/* <div class="MuiBox-root css-1boemyw"> */
+
+
+/* div.MuiBox-root css-1boemyw{
+  align-items: center;
+  justify-content: center;
+}
+
+
+.MuiImageList-root {
+  align-items: center;
+  justify-content: center;
+} */
+
+
+/* <ul class="MuiImageList-root MuiImageList-masonry css-10riir9-MuiImageList-root" style="column-count: 1; column-gap: 8px;"> */
+
+img {
+  margin: 5px 25px 10px 25px;
+  padding: 0px 5px 0px 5px;
+}
+
+/* ul {
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+} */
+
+.searchResults {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+}
+
 .App {
   text-align: center;
 }
