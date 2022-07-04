@@ -94,7 +94,7 @@ const Main = (props) => {
             <Typography variant="body2" color="text.secondary" align="center">
                 {'Copyright © '}
                 {/* <Link color="inherit" href="https://mui.com/"> */}
-                    tsundoku
+                tsundoku
                 {/* </Link>{' '} */}
                 {new Date().getFullYear()}
                 {'.'}
@@ -109,48 +109,62 @@ const Main = (props) => {
     // the return 
     //////////////////////////////////////////////
 
+    if (props.view === 'profile') {
         return (
+            <>
+                <Profile />
+            </>
+        )
+    } else if (props.view === 'profile') {
+        return (
+            <>
+                <Account />
+            </>
+        )
+    } else 
+        return (
+
             <>
                 <ThemeProvider theme={theme}>
                     <CssBaseline />
-                        <AppBar component="nav">
-                            <Toolbar>
-                                <IconButton
-                                    color="inherit"
-                                    aria-label="open drawer"
-                                    edge="start"
-                                    // onClick={handleDrawerToggle}
-                                    sx={{ mr: 2, display: { sm: 'none' } }}
-                                >
-                                    <MenuIcon />
-                                </IconButton>
-                                <Typography
-                                    variant="h5"
-                                    component="div"
-                                    sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-                                >
-                                    tsundoku
-                                </Typography>
-                                <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-                                    <Button sx={{ color: '#fff' }}>
-                                        Home
-                                        {/* <NavLink to ="/">Home</NavLink> */}
-                                    </Button>
-                                    <Button sx={{ color: '#fff' }} >
-                                        My Books
-                                        {/* <NavLink to ="/mybooks">My Books</NavLink> */}
-                                    </Button>
-                                    <Button sx={{ color: '#fff' }}>
-                                        Settings
-                                        {/* <NavLink to ="/settings">Settings</NavLink> */}
-                                    </Button>
-                                </Box>
-                                
-                            </Toolbar>
-                            
-                        </AppBar>
+                    <AppBar component="nav">
+                        <Toolbar>
+                            <IconButton
+                                color="inherit"
+                                aria-label="open drawer"
+                                edge="start"
+                                // onClick={handleDrawerToggle}
+                                sx={{ mr: 2, display: { sm: 'none' } }}
+                            >
+                                <MenuIcon />
+                            </IconButton>
+                            <Typography
+                                variant="h5"
+                                component="div"
+                                sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+                            >
+                                tsundoku
+                            </Typography>
+                            <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+                                <Button onClick={mainView} sx={{ color: '#fff' }}>
+                                    Home
+                                    {/* <NavLink to ="/">Home</NavLink> */}
+                                </Button>
+                                <Button onClick={profileView} sx={{ color: '#fff' }} >
+                                    My Books
+                                    {/* <NavLink to ="/mybooks">My Books</NavLink> */}
+                                </Button>
+                                <Button onClick={accountView} sx={{ color: '#fff' }}>
+                                    Settings
+                                    {/* <NavLink to ="/settings">Settings</NavLink> */}
+                                </Button>
+                            </Box>
+
+                        </Toolbar>
+
+                    </AppBar>
                     <main>
-                    {/* <Route path="/mybooks" component={Profile}/> */}
+                        {/* <Route path="/mybooks" component={Profile}/> */}
                         {/* Hero unit */}
                         <Box
                             sx={{
@@ -282,6 +296,8 @@ const Main = (props) => {
                 </ThemeProvider>
             </>
         )
+    
+
 }
 
 export default Main;

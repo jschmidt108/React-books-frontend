@@ -47,7 +47,7 @@ const App = () => {
   // the return - skeleton
   //////////////////////////////////////////////
 
-  if (view === 'login') {
+  if (loginStatus === false) {
     return (
       <>
         <Login 
@@ -71,7 +71,8 @@ const App = () => {
 
       </>
     )
-  } else if (view === 'Main') {
+  } else 
+  // if (view === 'Main') {
     return (
       <>
 
@@ -84,29 +85,29 @@ const App = () => {
 
       </>
     )
-  } else if (view === 'profile') {
-    return (
-      <>
-        <Profile 
-        users={users} setUsers={setUsers} 
-        user={user} setUser={setUser} 
-        view={view} setView={setView} 
-        loginStatus={loginStatus} setLoginStatus={setLoginStatus}
-        />
-      </>
-    )
-  } else if (view === 'account') {
-    return (
-      <>
-        <Account 
-        users={users} setUsers={setUsers} 
-        user={user} setUser={setUser} 
-        view={view} setView={setView} 
-        loginStatus={loginStatus} setLoginStatus={setLoginStatus}
-        />
-      </>
-    )
-  } 
+  // } else if (view === 'profile') {
+  //   return (
+  //     <>
+  //       <Profile 
+  //       users={users} setUsers={setUsers} 
+  //       user={user} setUser={setUser} 
+  //       view={view} setView={setView} 
+  //       loginStatus={loginStatus} setLoginStatus={setLoginStatus}
+  //       />
+  //     </>
+  //   )
+  // } else if (view === 'account') {
+  //   return (
+  //     <>
+  //       <Account 
+  //       users={users} setUsers={setUsers} 
+  //       user={user} setUser={setUser} 
+  //       view={view} setView={setView} 
+  //       loginStatus={loginStatus} setLoginStatus={setLoginStatus}
+  //       />
+  //     </>
+  //   )
+  // } 
 
   }
 

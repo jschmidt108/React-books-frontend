@@ -10,6 +10,7 @@ import axios from 'axios'
 import Signup from './ViewSignup.js'
 import Main from './ViewMain.js'
 import Profile from './ViewProfile.js'
+import Account from './ViewAccount.js'
 
 // import styling
 // import * as React from 'react';
@@ -265,6 +266,14 @@ const Login = (props) => {
                 <Main/>
             </>
         )
+    } else if (props.view === 'profile') {
+        <>
+            <Profile/>
+        </>
+    } else if (props.view=== 'profile') {
+        <>
+            <Account/>
+        </>
     }
 }
 
