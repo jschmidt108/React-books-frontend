@@ -1,11 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
 import '../App.css';
-import {
-    BrowserRouter as Router,
-    Route,
-    // Link
-  } from 'react-router-dom'
+import { Routes, Route, Link } from "react-router-dom";
 
 // view imports
 import Profile from './ViewProfile.js'
@@ -26,7 +22,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
+// import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
@@ -44,14 +40,6 @@ const Main = (props) => {
 
     const [book, setBook] = useState("")
     const [result, setResult] = useState([])
-
-    const [trending, setTrending] = useState("")
-    const [mystery, setMystery] = useState("")
-    const [romance, setRomance] = useState("")
-    const [history, setHistory] = useState("")
-    const [politics, setPolitics] = useState("")
-    const [finance, setFinance] = useState("")
-
     const [apiKey, setApiKey] = useState("AIzaSyBve9w79Xx2P5uFzsVwxXLNiKvEE3vd4fw")
 
 
@@ -105,9 +93,9 @@ const Main = (props) => {
         return (
             <Typography variant="body2" color="text.secondary" align="center">
                 {'Copyright © '}
-                <Link color="inherit" href="https://mui.com/">
+                {/* <Link color="inherit" href="https://mui.com/"> */}
                     tsundoku
-                </Link>{' '}
+                {/* </Link>{' '} */}
                 {new Date().getFullYear()}
                 {'.'}
             </Typography>
@@ -125,38 +113,44 @@ const Main = (props) => {
             <>
                 <ThemeProvider theme={theme}>
                     <CssBaseline />
-                    <AppBar component="nav">
-                        <Toolbar>
-                            <IconButton
-                                color="inherit"
-                                aria-label="open drawer"
-                                edge="start"
-                                // onClick={handleDrawerToggle}
-                                sx={{ mr: 2, display: { sm: 'none' } }}
-                            >
-                                <MenuIcon />
-                            </IconButton>
-                            <Typography
-                                variant="h5"
-                                component="div"
-                                sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-                            >
-                                tsundoku
-                            </Typography>
-                            <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-                                <Button sx={{ color: '#fff' }}>
-                                    Home
-                                </Button>
-                                <Button sx={{ color: '#fff' }} >
-                                    My Books
-                                </Button>
-                                <Button sx={{ color: '#fff' }}>
-                                    Settings
-                                </Button>
-                            </Box>
-                        </Toolbar>
-                    </AppBar>
+                        <AppBar component="nav">
+                            <Toolbar>
+                                <IconButton
+                                    color="inherit"
+                                    aria-label="open drawer"
+                                    edge="start"
+                                    // onClick={handleDrawerToggle}
+                                    sx={{ mr: 2, display: { sm: 'none' } }}
+                                >
+                                    <MenuIcon />
+                                </IconButton>
+                                <Typography
+                                    variant="h5"
+                                    component="div"
+                                    sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+                                >
+                                    tsundoku
+                                </Typography>
+                                <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+                                    <Button sx={{ color: '#fff' }}>
+                                        Home
+                                        {/* <NavLink to ="/">Home</NavLink> */}
+                                    </Button>
+                                    <Button sx={{ color: '#fff' }} >
+                                        My Books
+                                        {/* <NavLink to ="/mybooks">My Books</NavLink> */}
+                                    </Button>
+                                    <Button sx={{ color: '#fff' }}>
+                                        Settings
+                                        {/* <NavLink to ="/settings">Settings</NavLink> */}
+                                    </Button>
+                                </Box>
+                                
+                            </Toolbar>
+                            
+                        </AppBar>
                     <main>
+                    {/* <Route path="/mybooks" component={Profile}/> */}
                         {/* Hero unit */}
                         <Box
                             sx={{
