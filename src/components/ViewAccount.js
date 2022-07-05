@@ -38,7 +38,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 const Account = (props) => {
 
-    
+
 
 
     //////////////////////////////////////////////
@@ -144,7 +144,7 @@ const Account = (props) => {
                                     {/* <NavLink to ="/mybooks">My Books</NavLink> */}
                                 </Button>
                                 <Button onClick={profileView} sx={{ color: '#fff' }} >
-                                    My Books
+                                    My Shelves
                                     {/* <NavLink to ="/mybooks">My Books</NavLink> */}
                                 </Button>
                                 <Button onClick={accountView} sx={{ color: '#fff' }}>

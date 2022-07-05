@@ -38,7 +38,7 @@ const handleChange = (event) => {
 const handleSubmit = (event) => {
   event.preventDefault()
   // console.log(book)
-  props.handleCreate(props.book)
+  props.handleCreate(book)
   setBook({cover_img: '', title: '', author_name: '', genre: '', page_count: '', isbn: '', rating: '' })
 }
 
