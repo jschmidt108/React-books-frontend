@@ -32,6 +32,7 @@ import ImageListItem from '@mui/material/ImageListItem';
 
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import userEvent from '@testing-library/user-event';
 
 
 
@@ -39,6 +40,86 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 const Profile = (props) => {
 
+    const herokuUsersUrl = 'https://lit-spire-95226.herokuapp.com/api/useraccount'
+    const localUsersUrl = 'http://localhost:8000/api/useraccount'
+
+    let [display, setDisplay] = useState('past')
+
+
+    const getPast = () => {
+        setDisplay('past')
+        axios
+            // .get(localUsersUrl)
+            .get(herokuUsersUrl + "/" + props.user.id)
+            .then(
+                (response) => props.setShelves(response.data.hasRead),
+                // console.log(props.shelves),
+                (err) => console.error(err)
+            )
+            .catch((error) => console.error(error))
+    }
+
+    const getCurrent = () => {
+        setDisplay('current')
+        axios
+            // .get(localUsersUrl)
+            .get(herokuUsersUrl + "/" + props.user.id)
+            .then(
+                (response) => props.setShelves(response.data.isReading),
+                // console.log(props.shelves),
+                (err) => console.error(err)
+            )
+            .catch((error) => console.error(error))
+    }
+
+    const getFuture = () => {
+        setDisplay('future')
+        axios
+            // .get(localUsersUrl)
+            .get(herokuUsersUrl + "/" + props.user.id)
+            .then(
+                (response) => props.setShelves(response.data.toRead),
+                // console.log(props.shelves),
+                (err) => console.error(err)
+            )
+            .catch((error) => console.error(error))
+    }
+
+
+    useEffect(() => {
+        if (display === 'past') {
+            getPast()
+        } else if (display === 'current') {
+            getCurrent()
+        } else if (display === 'future') {
+            getFuture()
+        }
+    }, [])
+
+    // useEffect(() => {
+    //     getPast()
+    //     getCurrent()
+    //     getFuture()
+    // }, [])
+
+    //////////////////////////////////////////////
+    // functions - display
+    //////////////////////////////////////////////
+
+    //// Books Read /////
+    const displayRead = () => {
+        setDisplay('past')
+    }
+
+    //// Reading /////
+    const displayReading = () => {
+        setDisplay('current')
+    }
+
+    //// To Read /////
+    const displayToRead = () => {
+        setDisplay('future')
+    }
 
 
 
@@ -187,14 +268,69 @@ const Profile = (props) => {
                                     (n.) buying books and not reading them; letting books pile up unread
                                     on shelves or floors or nightstands
                                 </Typography>
-                                <Typography variant="h5" align="left" color="text.secondary" paragraph>
-                                User Profile
-                                </Typography>
+
+                                <Stack
+                                    sx={{ pt: 4 }}
+                                    direction="row"
+                                    spacing={2}
+                                    justifyContent="center"
+                                >
+                                    <Button onClick={getPast} variant="contained">Read</Button>
+                                    <Button onClick={getCurrent} variant="contained">Reading</Button>
+                                    <Button onClick={getFuture} variant="contained">Want to Read</Button>
+
+                                </Stack>
 
                             </Container>
 
 
                         </Box>
+
+                        <Container sx={{ py: 8 }} maxWidth="md">
+                        <Typography variant="h5" align="left" color="text.secondary" paragraph>
+                                {props.user.name}'s Shelves
+                                </Typography>
+                            <Grid container spacing={4}>
+                                {props.shelves.map((shelf) => (
+                                        <Grid key={shelf.id} item xs={12} sm={6} md={4}>
+                                            <Card
+                                                sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+                                            >
+                                                <CardMedia
+                                                    component="img"
+
+                                                    image={shelf.cover_img}
+                                                    alt="random"
+                                                />
+                                                <CardContent sx={{ flexGrow: 1 }}>
+                                                    <Typography gutterBottom variant="h5" component="h2">
+                                                        {shelf.title}
+
+                                                    </Typography>
+                                                    <Typography>
+                                                        Author: {shelf.author_name}
+                                                    </Typography>
+                                                    <Typography>
+                                                        Genre: {shelf.genre}
+                                                    </Typography>
+                                                    <Typography>
+                                                        Pages: {shelf.page_count}
+                                                    </Typography>
+                                                    <Typography>
+                                                        ISBN: {shelf.isbn}
+                                                    </Typography>
+                                                    <Typography>
+                                                        Rating: {shelf.rating}
+                                                    </Typography>
+                                                </CardContent>
+                                            </Card>
+
+                                        </Grid>
+                                    ))}
+                            </Grid>
+                        </Container>
+                        
+                        }}
 
 
 
