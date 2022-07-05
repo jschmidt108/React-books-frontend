@@ -1,13 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
 import '../App.css';
-import {
-    BrowserRouter as Router,
-    Route,
-    // Link
-  } from 'react-router-dom'
+import { Routes, Route, Link } from "react-router-dom";
 
 // view imports
+import Library from './ViewLibrary.js'
 import Profile from './ViewProfile.js'
 import Account from './ViewAccount.js'
 
@@ -26,7 +23,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
+// import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
@@ -44,14 +41,6 @@ const Main = (props) => {
 
     const [book, setBook] = useState("")
     const [result, setResult] = useState([])
-
-    const [trending, setTrending] = useState("")
-    const [mystery, setMystery] = useState("")
-    const [romance, setRomance] = useState("")
-    const [history, setHistory] = useState("")
-    const [politics, setPolitics] = useState("")
-    const [finance, setFinance] = useState("")
-
     const [apiKey, setApiKey] = useState("AIzaSyBve9w79Xx2P5uFzsVwxXLNiKvEE3vd4fw")
 
 
@@ -86,6 +75,11 @@ const Main = (props) => {
         props.setView('main')
     }
 
+    //// Library - all books view /////
+    const libraryView = () => {
+        props.setView('library')
+    }
+
     //// My Books - profile view /////
     const profileView = () => {
         props.setView('profile')
@@ -105,9 +99,9 @@ const Main = (props) => {
         return (
             <Typography variant="body2" color="text.secondary" align="center">
                 {'Copyright © '}
-                <Link color="inherit" href="https://mui.com/">
-                    tsundoku
-                </Link>{' '}
+                {/* <Link color="inherit" href="https://mui.com/"> */}
+                tsundoku
+                {/* </Link>{' '} */}
                 {new Date().getFullYear()}
                 {'.'}
             </Typography>
@@ -121,7 +115,42 @@ const Main = (props) => {
     // the return 
     //////////////////////////////////////////////
 
+    if (props.view === 'profile') {
         return (
+            <>
+                <Profile 
+                users={props.users} setUsers={props.setUsers} 
+                user={props.user} setUser={props.setUser} 
+                view={props.view} setView={props.setView} 
+                // loginStatus={loginStatus} setLoginStatus={setLoginStatus}
+                />
+            </>
+        )
+    } else if (props.view === 'account') {
+        return (
+            <>
+                <Account 
+                users={props.users} setUsers={props.setUsers} 
+                user={props.user} setUser={props.setUser} 
+                view={props.view} setView={props.setView} 
+                // loginStatus={loginStatus} setLoginStatus={setLoginStatus}
+                />
+            </>
+        )
+    } else if (props.view === 'library') {
+        return (
+            <>
+                <Library
+                users={props.users} setUsers={props.setUsers} 
+                user={props.user} setUser={props.setUser} 
+                view={props.view} setView={props.setView} 
+                // loginStatus={loginStatus} setLoginStatus={setLoginStatus}
+                />
+            </>
+        )
+    } else 
+        return (
+
             <>
                 <ThemeProvider theme={theme}>
                     <CssBaseline />
@@ -141,22 +170,40 @@ const Main = (props) => {
                                 component="div"
                                 sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
                             >
+                                <Button 
+                                onClick={mainView} 
+                                variant="h5"
+                                component="div"
+                                // sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+                                >
                                 tsundoku
+                                    {/* <NavLink to ="/">Home</NavLink> */}
+                                </Button>
+                            
                             </Typography>
                             <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-                                <Button sx={{ color: '#fff' }}>
+                                {/* <Button onClick={mainView} sx={{ color: '#fff' }}>
                                     Home
+                                </Button> */}
+                                <Button onClick={libraryView} sx={{ color: '#fff' }} >
+                                    Library
+                                    {/* <NavLink to ="/mybooks">My Books</NavLink> */}
                                 </Button>
-                                <Button sx={{ color: '#fff' }} >
+                                <Button onClick={profileView} sx={{ color: '#fff' }} >
                                     My Books
+                                    {/* <NavLink to ="/mybooks">My Books</NavLink> */}
                                 </Button>
-                                <Button sx={{ color: '#fff' }}>
+                                <Button onClick={accountView} sx={{ color: '#fff' }}>
                                     Settings
+                                    {/* <NavLink to ="/settings">Settings</NavLink> */}
                                 </Button>
                             </Box>
+
                         </Toolbar>
+
                     </AppBar>
                     <main>
+                        {/* <Route path="/mybooks" component={Profile}/> */}
                         {/* Hero unit */}
                         <Box
                             sx={{
@@ -288,6 +335,8 @@ const Main = (props) => {
                 </ThemeProvider>
             </>
         )
+    
+
 }
 
 export default Main;
