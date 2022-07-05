@@ -26,6 +26,10 @@ const App = () => {
   let emptyUser = { name: '', username: '', email: '', password: '', hasRead: [], isReading: [], toRead: [] }
   const [user, setUser] = useState(emptyUser)
 
+  let [books, setBooks] = useState([])
+  // let emptyBook = { cover_img: '', title: '', author_name: '', genre: '', page_count: '', isbn: '', rating: ''}
+  // const [book, setBook] = useState(emptyBook)
+
   // view states
   let [view, setView] = useState('login')
   let [loginStatus, setLoginStatus] = useState(false)
@@ -55,6 +59,8 @@ const App = () => {
         user={user} setUser={setUser} 
         view={view} setView={setView} 
         loginStatus={loginStatus} setLoginStatus={setLoginStatus}
+        books={books} setBooks={setBooks}
+        // book={book} setBook={setBook}
         />
       </>
     )
@@ -67,6 +73,8 @@ const App = () => {
         user={user} setUser={setUser} 
         view={view} setView={setView} 
         loginStatus={loginStatus} setLoginStatus={setLoginStatus}
+        books={books} setBooks={setBooks}
+        // book={book} setBook={setBook}
         />
 
       </>
@@ -81,6 +89,8 @@ const App = () => {
         user={user} setUser={setUser} 
         view={view} setView={setView} 
         loginStatus={loginStatus} setLoginStatus={setLoginStatus}
+        books={books} setBooks={setBooks}
+        // book={book} setBook={setBook}
         />
 
       </>

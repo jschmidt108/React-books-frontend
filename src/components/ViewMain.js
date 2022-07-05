@@ -122,6 +122,8 @@ const Main = (props) => {
                 users={props.users} setUsers={props.setUsers} 
                 user={props.user} setUser={props.setUser} 
                 view={props.view} setView={props.setView} 
+                books={props.books} setBooks={props.setBooks} 
+                book={props.book} setBook={props.setBook}
                 // loginStatus={loginStatus} setLoginStatus={setLoginStatus}
                 />
             </>
@@ -133,6 +135,8 @@ const Main = (props) => {
                 users={props.users} setUsers={props.setUsers} 
                 user={props.user} setUser={props.setUser} 
                 view={props.view} setView={props.setView} 
+                books={props.books} setBooks={props.setBooks} 
+                book={props.book} setBook={props.setBook}
                 // loginStatus={loginStatus} setLoginStatus={setLoginStatus}
                 />
             </>
@@ -144,6 +148,8 @@ const Main = (props) => {
                 users={props.users} setUsers={props.setUsers} 
                 user={props.user} setUser={props.setUser} 
                 view={props.view} setView={props.setView} 
+                books={props.books} setBooks={props.setBooks} 
+                book={props.book} setBook={props.setBook}
                 // loginStatus={loginStatus} setLoginStatus={setLoginStatus}
                 />
             </>
