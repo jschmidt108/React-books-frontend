@@ -4,6 +4,7 @@ import '../App.css';
 import { Routes, Route, Link } from "react-router-dom";
 
 // view imports
+import Library from './ViewLibrary.js'
 import Profile from './ViewProfile.js'
 import Account from './ViewAccount.js'
 
@@ -74,6 +75,11 @@ const Main = (props) => {
         props.setView('main')
     }
 
+    //// Library - all books view /////
+    const libraryView = () => {
+        props.setView('library')
+    }
+
     //// My Books - profile view /////
     const profileView = () => {
         props.setView('profile')
@@ -112,13 +118,34 @@ const Main = (props) => {
     if (props.view === 'profile') {
         return (
             <>
-                <Profile />
+                <Profile 
+                users={props.users} setUsers={props.setUsers} 
+                user={props.user} setUser={props.setUser} 
+                view={props.view} setView={props.setView} 
+                // loginStatus={loginStatus} setLoginStatus={setLoginStatus}
+                />
             </>
         )
-    } else if (props.view === 'profile') {
+    } else if (props.view === 'account') {
         return (
             <>
-                <Account />
+                <Account 
+                users={props.users} setUsers={props.setUsers} 
+                user={props.user} setUser={props.setUser} 
+                view={props.view} setView={props.setView} 
+                // loginStatus={loginStatus} setLoginStatus={setLoginStatus}
+                />
+            </>
+        )
+    } else if (props.view === 'library') {
+        return (
+            <>
+                <Library
+                users={props.users} setUsers={props.setUsers} 
+                user={props.user} setUser={props.setUser} 
+                view={props.view} setView={props.setView} 
+                // loginStatus={loginStatus} setLoginStatus={setLoginStatus}
+                />
             </>
         )
     } else 
@@ -143,12 +170,24 @@ const Main = (props) => {
                                 component="div"
                                 sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
                             >
+                                <Button 
+                                onClick={mainView} 
+                                variant="h5"
+                                component="div"
+                                // sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+                                >
                                 tsundoku
+                                    {/* <NavLink to ="/">Home</NavLink> */}
+                                </Button>
+                            
                             </Typography>
                             <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-                                <Button onClick={mainView} sx={{ color: '#fff' }}>
+                                {/* <Button onClick={mainView} sx={{ color: '#fff' }}>
                                     Home
-                                    {/* <NavLink to ="/">Home</NavLink> */}
+                                </Button> */}
+                                <Button onClick={libraryView} sx={{ color: '#fff' }} >
+                                    Library
+                                    {/* <NavLink to ="/mybooks">My Books</NavLink> */}
                                 </Button>
                                 <Button onClick={profileView} sx={{ color: '#fff' }} >
                                     My Books

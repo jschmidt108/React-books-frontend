@@ -97,6 +97,12 @@ const Profile = (props) => {
                 <Main />
             </>
         )
+    } else if (props.view === 'profile') {
+        return (
+            <>
+                <Profile />
+            </>
+        )
     } else if (props.view === 'account') {
         return (
             <>
@@ -188,7 +194,7 @@ const Profile = (props) => {
                                     on shelves or floors or nightstands
                                 </Typography>
                                 <Typography variant="h5" align="left" color="text.secondary" paragraph>
-                                User Profile
+                                Library
                                 </Typography>
 
                             </Container>
