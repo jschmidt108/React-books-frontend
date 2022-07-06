@@ -7,7 +7,7 @@ import '../App.css';
 // import Profile from './ViewProfile.js'
 import Account from './ViewAccount.js'
 import Main from './ViewMain.js'
-import ProfileAdd from './ProfileAdd.js'
+// import ProfileAdd from './ProfileAdd.js'
 
 // import * as React from 'react';
 import AppBar from '@mui/material/AppBar';

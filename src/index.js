@@ -6,18 +6,18 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { createStore } from 'redux';
-import loggedReducer from './components/LoggedReducer';
+// import loggedReducer from './components/LoggedReducer';
 import { Provider } from 'react-redux';
 
-const store = createStore(loggedReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && Window.__REDUX_DEVTOOLS_EXTENSION__());
+// const store = createStore(loggedReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && Window.__REDUX_DEVTOOLS_EXTENSION__());
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Router>
     <React.StrictMode>
-      <Provider store={store}>
+      {/* <Provider store={store}> */}
         <App />
-      </Provider>
+      {/* </Provider> */}
     </React.StrictMode>
   </Router>
 );
