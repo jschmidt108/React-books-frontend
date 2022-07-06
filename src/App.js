@@ -6,6 +6,7 @@
 import './App.css';
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import {useSelector} from 'react-redux'
 
 // view imports
 import Login from './components/ViewLogin.js'
@@ -26,6 +27,7 @@ const App = () => {
   let emptyUser = { name: '', username: '', email: '', password: '', hasRead: [], isReading: [], toRead: [] }
   const [user, setUser] = useState(emptyUser)
   // const [userId, setUserId] = useState(0)
+  const LoggedReducer = useSelector(state => state.LoggedReducer)
 
   let [books, setBooks] = useState([])
   let [shelves, setShelves] = useState([])

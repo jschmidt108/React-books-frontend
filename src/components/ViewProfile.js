@@ -327,11 +327,11 @@ const Profile = (props) => {
                         </Container>
                         <Container>
                             <Typography variant="subtitle1" align="center" color="text.secondary" component="p">
-                                <Button variant="outlined">
+                                {/* <Button variant="outlined">
                                     <ProfileAdd 
                                     handleAddPast={handleAddPast} 
                                     />
-                                    </Button>
+                                    </Button> */}
                             </Typography>
                         </Container>
                         
