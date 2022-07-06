@@ -48,6 +48,9 @@ const Library = (props) => {
     const herokuBooksUrl = 'https://lit-spire-95226.herokuapp.com/api/books'
     const localBooksUrl = 'http://localhost:8000/api/books'
 
+    const herokuUsersUrl = 'https://lit-spire-95226.herokuapp.com/api/useraccount'
+    const localUsersUrl = 'http://localhost:8000/api/useraccount'
+
     // let [books, setBooks] = useState([])
     const [query, setQuery] = useState("")
 
@@ -79,6 +82,15 @@ const Library = (props) => {
             })
     }
 
+    // const handleAddPast = (addRead) => {
+    //     axios
+    //         .post(herokuUsersUrl + "/" + props.user.id)
+    //         .then((response) => 
+    //             props.setShelves(response.data.hasRead, addRead),
+    //         )
+    // }
+    
+
     ///////UPDATE BOOK//////////
     const handleUpdate = (updateBook) => {
         console.log(updateBook.id)
@@ -93,6 +105,7 @@ const Library = (props) => {
 
             })
     }
+
 
     ///////DELETE BOOK//////////
     const handleDelete = (deletedBook) => {
@@ -119,6 +132,8 @@ const Library = (props) => {
             behavior: 'smooth',
         });
     };
+
+
 
     //////////////////////////////////////////////
     // functions - related to search
@@ -217,21 +232,13 @@ const Library = (props) => {
                                 component="div"
                                 sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
                             >
-                                <Button 
-                                onClick={mainView} 
-                                variant="h5"
-                                component="div"
-                                // sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-                                >
                                 tsundoku
-                                    {/* <NavLink to ="/">Home</NavLink> */}
-                                </Button>
-                            
+
                             </Typography>
                             <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-                                {/* <Button onClick={mainView} sx={{ color: '#fff' }}>
+                                <Button onClick={mainView} sx={{ color: '#fff' }}>
                                     Home
-                                </Button> */}
+                                </Button>
                                 <Button onClick={libraryView} sx={{ color: '#fff' }} >
                                     Library
                                     {/* <NavLink to ="/mybooks">My Books</NavLink> */}
@@ -240,10 +247,9 @@ const Library = (props) => {
                                     My Shelves
                                     {/* <NavLink to ="/mybooks">My Books</NavLink> */}
                                 </Button>
-                                <Button onClick={accountView} sx={{ color: '#fff' }}>
+                                {/* <Button onClick={accountView} sx={{ color: '#fff' }}>
                                     Settings
-                                    {/* <NavLink to ="/settings">Settings</NavLink> */}
-                                </Button>
+                                </Button> */}
                             </Box>
 
                         </Toolbar>
@@ -343,14 +349,16 @@ const Library = (props) => {
                                                         </Typography>
                                                     </CardContent>
                                                     <CardActions>
-
-                                                        {/* <Button>Delete</Button> */}
                                                         <Button onClick={() => handleDelete(book)} value={book.id}>Delete</Button>
                                                         <BookEdit 
                                                         handleUpdate={handleUpdate} 
                                                         book={book}
                                                         />
-
+                                                    </CardActions>
+                                                    <CardActions>
+                                                        {/* <Button onClick={handleAddPast} value={book.id}>Read</Button>
+                                                        <Button onClick={handleAddCurrent} value={book.id}>Reading</Button>
+                                                        <Button onClick={handleAddFuture} value={book.id}>To Read</Button> */}
                                                     </CardActions>
                                                 </Card>
 

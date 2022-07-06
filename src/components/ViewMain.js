@@ -179,21 +179,12 @@ const Main = (props) => {
                                 component="div"
                                 sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
                             >
-                                <Button 
-                                onClick={mainView} 
-                                variant="h5"
-                                component="div"
-                                // sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-                                >
-                                tsundoku
-                                    {/* <NavLink to ="/">Home</NavLink> */}
-                                </Button>
-                            
+                                tsundoku                            
                             </Typography>
                             <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-                                {/* <Button onClick={mainView} sx={{ color: '#fff' }}>
+                                <Button onClick={mainView} sx={{ color: '#fff' }}>
                                     Home
-                                </Button> */}
+                                </Button>
                                 <Button onClick={libraryView} sx={{ color: '#fff' }} >
                                     Library
                                     {/* <NavLink to ="/mybooks">My Books</NavLink> */}
@@ -202,10 +193,9 @@ const Main = (props) => {
                                     My Shelves
                                     {/* <NavLink to ="/mybooks">My Books</NavLink> */}
                                 </Button>
-                                <Button onClick={accountView} sx={{ color: '#fff' }}>
+                                {/* <Button onClick={accountView} sx={{ color: '#fff' }}>
                                     Settings
-                                    {/* <NavLink to ="/settings">Settings</NavLink> */}
-                                </Button>
+                                </Button> */}
                             </Box>
 
                         </Toolbar>

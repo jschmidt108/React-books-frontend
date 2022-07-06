@@ -7,6 +7,7 @@ import '../App.css';
 // import Profile from './ViewProfile.js'
 import Account from './ViewAccount.js'
 import Main from './ViewMain.js'
+import ProfileAdd from './ProfileAdd.js'
 
 // import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
@@ -59,6 +60,15 @@ const Profile = (props) => {
             .catch((error) => console.error(error))
     }
 
+    const handleAddPast = (addRead) => {
+        axios
+            .post(herokuUsersUrl + "/" + props.user.id, addRead)
+            .then((response) => {
+                console.log(response)
+                props.setShelves([...props.shelves, addRead])
+            })
+    }
+
     const getCurrent = () => {
         setDisplay('current')
         axios
@@ -96,11 +106,6 @@ const Profile = (props) => {
         }
     }, [])
 
-    // useEffect(() => {
-    //     getPast()
-    //     getCurrent()
-    //     getFuture()
-    // }, [])
 
     //////////////////////////////////////////////
     // functions - display
@@ -206,21 +211,13 @@ const Profile = (props) => {
                                 component="div"
                                 sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
                             >
-                                <Button 
-                                onClick={mainView} 
-                                variant="h5"
-                                component="div"
-                                // sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-                                >
                                 tsundoku
-                                    {/* <NavLink to ="/">Home</NavLink> */}
-                                </Button>
                             
                             </Typography>
                             <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-                                {/* <Button onClick={mainView} sx={{ color: '#fff' }}>
+                                <Button onClick={mainView} sx={{ color: '#fff' }}>
                                     Home
-                                </Button> */}
+                                </Button>
                                 <Button onClick={libraryView} sx={{ color: '#fff' }} >
                                     Library
                                     {/* <NavLink to ="/mybooks">My Books</NavLink> */}
@@ -229,10 +226,9 @@ const Profile = (props) => {
                                     My Shelves
                                     {/* <NavLink to ="/mybooks">My Books</NavLink> */}
                                 </Button>
-                                <Button onClick={accountView} sx={{ color: '#fff' }}>
+                                {/* <Button onClick={accountView} sx={{ color: '#fff' }}>
                                     Settings
-                                    {/* <NavLink to ="/settings">Settings</NavLink> */}
-                                </Button>
+                                </Button> */}
                             </Box>
 
                         </Toolbar>
@@ -320,20 +316,25 @@ const Profile = (props) => {
                                                         ISBN: {shelf.isbn}
                                                     </Typography>
                                                     <Typography>
-                                                        Rating: {shelf.rating}
-                                                    </Typography>
-                                                </CardContent>
-                                            </Card>
+                                                    Rating: {shelf.rating}
+                                                </Typography>
+                                            </CardContent>
+                                        </Card>
 
                                         </Grid>
                                     ))}
                             </Grid>
                         </Container>
+                        <Container>
+                            <Typography variant="subtitle1" align="center" color="text.secondary" component="p">
+                                <Button variant="outlined">
+                                    <ProfileAdd 
+                                    handleAddPast={handleAddPast} 
+                                    />
+                                    </Button>
+                            </Typography>
+                        </Container>
                         
-                        }}
-
-
-
  
                     </main>
                     {/* Footer */}
