@@ -38,6 +38,7 @@ const Login = (props) => {
     // general states
 
     const [user, setUser] = useState({ ...props.user })
+    // const [userId, setUserId] = useState(0)
     // const [member, setMember] = useState({...props.member})
 
 
@@ -100,6 +101,7 @@ const Login = (props) => {
             .then((response) => {
                 // console.log(userLogin)
                 console.log(response.data)
+                // console.log(response.data.id)
                 props.setUser(response.data)
                 props.setLoginStatus(true)
                 // console.log(response)

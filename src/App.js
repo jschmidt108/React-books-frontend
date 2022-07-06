@@ -6,6 +6,7 @@
 import './App.css';
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import {useSelector} from 'react-redux'
 
 // view imports
 import Login from './components/ViewLogin.js'
@@ -25,8 +26,11 @@ const App = () => {
   let [users, setUsers] = useState([])
   let emptyUser = { name: '', username: '', email: '', password: '', hasRead: [], isReading: [], toRead: [] }
   const [user, setUser] = useState(emptyUser)
+  // const [userId, setUserId] = useState(0)
+  const LoggedReducer = useSelector(state => state.LoggedReducer)
 
   let [books, setBooks] = useState([])
+  let [shelves, setShelves] = useState([])
   // let emptyBook = { cover_img: '', title: '', author_name: '', genre: '', page_count: '', isbn: '', rating: ''}
   // const [book, setBook] = useState(emptyBook)
 
@@ -57,9 +61,11 @@ const App = () => {
         <Login 
         users={users} setUsers={setUsers}
         user={user} setUser={setUser} 
+        // userId={userId} setUserId={setUserId} 
         view={view} setView={setView} 
         loginStatus={loginStatus} setLoginStatus={setLoginStatus}
         books={books} setBooks={setBooks}
+        shelves={shelves} setShelves={setShelves}
         // book={book} setBook={setBook}
         />
       </>
@@ -71,9 +77,11 @@ const App = () => {
         <Signup 
         users={users} setUsers={setUsers} 
         user={user} setUser={setUser} 
+        // userId={userId} setUserId={setUserId} 
         view={view} setView={setView} 
         loginStatus={loginStatus} setLoginStatus={setLoginStatus}
         books={books} setBooks={setBooks}
+        shelves={shelves} setShelves={setShelves}
         // book={book} setBook={setBook}
         />
 
@@ -87,9 +95,11 @@ const App = () => {
         <Main
         users={users} setUsers={setUsers} 
         user={user} setUser={setUser} 
+        // userId={userId} setUserId={setUserId} 
         view={view} setView={setView} 
         loginStatus={loginStatus} setLoginStatus={setLoginStatus}
         books={books} setBooks={setBooks}
+        shelves={shelves} setShelves={setShelves}
         // book={book} setBook={setBook}
         />
 
