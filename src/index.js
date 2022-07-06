@@ -11,16 +11,27 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 // const store = createStore(loggedReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && Window.__REDUX_DEVTOOLS_EXTENSION__());
 
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(
+//   <Router>
+//     <React.StrictMode>
+//       {/* <Provider store={store}> */}
+//         <App />
+//       {/* </Provider> */}
+//     </React.StrictMode>
+//   </Router>
+// );
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Router>
-    <React.StrictMode>
-      {/* <Provider store={store}> */}
-        <App />
-      {/* </Provider> */}
-    </React.StrictMode>
-  </Router>
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+
 );
+
+
 
 // STORE -> GLOBALIZED STATE
 
